@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rólunk</title>
+  <style>
+    :root {
+      --accent: #111; /* deep wine red */
+      --bg-gradient: linear-gradient(135deg, #7a7b77, #dcdcdc);
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      background: var(--bg-gradient);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Card container */
+    .container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      width: min(900px, 95%);
+      height: 100vh; /* full height */
+      padding: 2rem;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      /* Animation from right */
+      transform: translateX(80%);
+      animation: slideIn 0.425s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Kilépés button inside card */
+    .back-btn {
+      align-self: flex-start;
+      background: var(--accent);
+      color: #fff;
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 1s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    .back-btn:hover {
+      background: #222;
+      transform: translateY(-2px);
+    }
+
+    header {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    header h1 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 5rem;
+      letter-spacing: 5px;
+    }
+    .lead {
+      margin: 0rem 0 1rem;
+      color: #555;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .about {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10rem;
+      align-items: start;
+    }
+    @media (min-width: 700px) {
+      .cols {
+        grid-template-columns: 1fr 320px;
+      }
+    }
+
+    .text p {
+      margin: 0 0 1rem 0;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    figure {
+      margin: 0;
+      background: #fafafa;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+    figure:hover {
+      transform: scale(1.02);
+    }
+    img {
+      display: block;
+      width: 70%;
+      height: auto;
+      object-fit: cover;
+    }
+    figcaption {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #eee;
+    }
+
+    footer {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #444;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .spacer {
+      height: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <!-- Button inside card -->
+    <a href="../Winery.html" class="back-btn">← Vissza</a>
+
+    <header>
+      <h1>Rólunk</h1>
+      <p class="lead">Kappel Családi Pincészet — Szekszárd, Benedek Apát utca</p>
+    </header>
+
+    <section class="about">
+      <div class="cols">
+        <div class="text">
+          <p>
+            A Kappel Családi Pincészet Szekszárd szívéhez közel, a Benedek Apát utcában található. Szőlőültetvényeink a pincét körülölelve, az Előhegy dűlő
+            részeként lassan 50 éve festik meg a tájat, a Szekszárdi Dombság és a Szekszárdi Borvidék ősi ültetvényeinek egyike.
+          </p>
+          <div class="spacer"></div>
+          <p>
+            Pincészetünkben egyesül a tradíció és a modern borkészítési technika, a család szó, nem csupán egy kiegészítő név a pincészet neve mellett,
+            hanem a Kappel család szenvedélyes közössége, akik kétkezi munkával egészítik ki a borkészítési- és szőlőtermesztési technológiákat
+            a szőlőműveléstől egészen a szüretig és borkészítésig.
+          </p>
+        </div>
+
+        <aside aria-label="Képek">
+          <figure>
+            <img src="Images/Kép1.jpg" loading="lazy">
+            <figcaption>Szőlőültetvény — Előhegy dűlő</figcaption>
+          </figure>
+          <figure>
+            <img src="Images/Kép2.jpg" loading="lazy">
+            <figcaption>A Kappel család és a pincészet</figcaption>
+          </figure>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        További információért keresse fel az
+        <a href="Elérhetőségeink.html">Elérhetőségeink</a>
+        oldalát, vagy látogasson el hozzánk személyesen.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

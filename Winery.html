@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winery</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* Allow scrolling of the entire page */
+        }
+        #wrap {
+            position: fixed; /* Make the #wrap section an overlay */
+            top: 0; /* Position it above the viewport */
+            left: 0;
+            width: 100%;
+            height: 100%; /* Cover the entire viewport */
+            background-color: rgba(122, 123, 119, 0.9); /* Semi-transparent background */
+            z-index: 1000; /* Ensure it stays above other content */
+            overflow: hidden; /* Prevent scrolling inside the overlay */
+        }
+        .s_embed_code {
+            height: 100%; /* Ensure the embedded content fills the overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .extra-section {
+            height: 1000px;
+            background-color: rgb(200, 200, 200);
+            text-align: center;
+            padding: 20px;
+        }
+        .extra-section-buttons {
+            position: fixed; /* Keep buttons in place */
+            bottom: 50px;
+            left: 250px;
+            z-index: 1100; /* Ensure buttons appear above the overlay */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.5s ease-in-out; /* Smooth fade-in/out effect */
+        }
+        .extra-section-buttons button {
+            display: block; /* Stack buttons vertically */
+            margin: 30px 0; /* Add vertical spacing between buttons */
+            padding: 50px; /* Adjust padding for consistent button size */
+            font-size: 18px; /* Increase font size */
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.4); /* Darker translucent background */
+            color: white; /* Default text color */
+            border: none;
+            border-radius: 50px; /* Rounded corners for a modern look */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.3); /* Outer and inner shadows */
+            backdrop-filter: blur(10px); /* Glass effect */
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* Add hover effect */
+            width: 300px; /* Fixed width for all buttons */
+        }
+        .extra-section-buttons button:hover {
+            background: rgba(255, 255, 255, 0.5); /* Slightly brighter on hover */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4); /* Enhanced shadows */
+            transform: scale(1.2); /* Slightly enlarge on hover */
+            color: black; /* Darken text color on hover */
+        }
+        .overlay-box {
+            position: fixed;
+            bottom: 0px; /* Position above the buttons */
+            left: 0px;
+            width: 100%;
+            height: 9%;
+            background: rgba(122, 123, 119, 0); /* Semi-transparent dark background */
+            border-radius: 0px; /* Rounded corners */
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0); /* Add shadow for depth */
+            z-index: 1200; /* Ensure it appears above the buttons */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(0, 0, 0); /* Text color */
+            font-size: 0px; /* Font size for the text */
+            font-family: Georgia; /* Font style */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <section class="s_embed_code o_colored_level pt0 pb256 text-center">
+            <div data-us-project="TTN4NlnR4efkRLgrSXXD" style="width:1920px; height: 930px"></div>
+            <script type="text/javascript">
+                !function(){
+                    if(!window.UnicornStudio){
+                        window.UnicornStudio={isInitialized:!1};
+                        var i=document.createElement("script");
+                        i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js",
+                        i.onload=function(){
+                            window.UnicornStudio.isInitialized||(UnicornStudio.init({
+                                disableBranding: true // Disable "Made with unicorn.studio" branding
+                            }),window.UnicornStudio.isInitialized=!0)
+                        },
+                        (document.head || document.body).appendChild(i)
+                    }
+                }();
+            </script>
+        </section>
+    </div>
+
+    <!-- Additional content to make the page scrollable -->
+    <div class="extra-section">
+        <h2></h2>
+    </div>
+    <div class="extra-section" style="background-color: rgb(180, 180, 180);">
+        <p></p>
+        <!-- Box added above the buttons -->
+        <div class="overlay-box"></div>
+        <!-- Buttons added to the middle/down left -->
+        <div class="extra-section-buttons" id="buttons">
+            <button onclick="location.href='Sites/Borkostolás.html'">Borkostolás</button>
+            <button onclick="location.href='Sites/Rólunk.html'">Rólunk</button>
+            <button onclick="location.href='Sites/Kínálatunk.html'">Kínálatunk</button>
+            <button onclick="location.href='Sites/Elérhetőségeink.html'">Elérhetőségeink</button>
+        </div>
+    </div>
+
+    <!-- Box added above the buttons -->
+    <div class="overlay-box">
+        📍- Szekszárd,
+        Benedek apát
+    </div>
+
+    <script>
+        // Add scroll-based visibility for buttons
+        const buttons = document.getElementById('buttons');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const viewportHeight = window.innerHeight;
+
+            // Show buttons when user scrolls past the first section
+            if (scrollY > viewportHeight) {
+                buttons.style.opacity = 1; // Fade in
+            } else {
+                buttons.style.opacity = 0; // Fade out
+            }
+        });
+
+        // Adjust scroll speed
+        document.addEventListener('wheel', (event) => {
+            event.preventDefault(); // Prevent default scrolling behavior
+            window.scrollBy({
+                top: event.deltaY * 10, // Multiply scroll distance by 2 for faster scrolling
+                behavior: 'smooth', // Smooth scrolling effect
+            });
+        }, { passive: false }); // Ensure the event listener is not passive
+    </script>
+</body>
+</html>
